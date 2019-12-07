@@ -61,6 +61,29 @@ router.get('/join', function(req, res, next) {
 	}
 });
 
+router.post('/addclub', function(req, res, next) {
+	if (req.session.login == null) {
+		res.render('index');
+	} else {
+		var city = req.param('city');
+		var state = req.param('state');
+		var zip = req.param('zip');
+		
+		const client = new MongoClient(uri, { useNewUrlParser: true });
+        client.connect(err => {
+        const collection = client.db("book_club_db").collection("clubs");
+  
+        collection.insertOne({ city: city, state: state, zip: zip }, function(err, res) {
+        if (err) throw err;
+		
+        });
+		
+		res.redirect('/home');
+		client.close();
+		});
+	}
+});
+
 router.get('/logout', function(req, res, next) {
 	req.session.login = null;
 	res.render('index');

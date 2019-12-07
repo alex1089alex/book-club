@@ -6,12 +6,14 @@ block content
   a(href='/home/joined') Joined
   p(style='white-space:pre;')
   h1= 'Add Book Club'
-  form(method='GET' action='/home/join')
+  form(method='POST' action='/home/addclub')
        div.form-group
-          input.form-control(type='hidden' name='city', value=item.city)
-          input.form-control(type='hidden' name='state', value=item.state)
-          input.form-control(type='hidden' name='zip', value=item.zip)
-       button.btn(type='submit') Join
+          input.form-control(type='text' name='city', placeholder='Enter city', required)
+       div.form-group
+          input.form-control(type='text' name='state', placeholder='Enter state', required)
+       div.form-group
+          input.form-control(type='text' name='zip', placeholder='Enter zip', required)
+       button.btn(type='submit') Add Book Club
   p(style='white-space:pre;')
   h1= 'Book Clubs'
   form(method='GET' action='/home/search')
@@ -32,4 +34,9 @@ block content
                     td #{item.state}
                     td #{item.zip}
                     td 
-                       form(method='GET' action='/home/j
+                       form(method='GET' action='/home/join')
+                         div.form-group
+                           input.form-control(type='hidden' name='city', value=item.city)
+                           input.form-control(type='hidden' name='state', value=item.state)
+                           input.form-control(type='hidden' name='zip', value=item.zip)
+                         button.btn(type='submit') Join
