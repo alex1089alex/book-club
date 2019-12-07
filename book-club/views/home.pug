@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  a(href='/home/logout') Logout
+  p(style='white-space:pre;')
+  a(href='/home/joined') Joined
+  p(style='white-space:pre;')
+  h1= 'Add Book Club'
+  form(method='GET' action='/home/join')
+       div.form-group
+          input.form-control(type='hidden' name='city', value=item.city)
+          input.form-control(type='hidden' name='state', value=item.state)
+          input.form-control(type='hidden' name='zip', value=item.zip)
+       button.btn(type='submit') Join
+  p(style='white-space:pre;')
+  h1= 'Book Clubs'
+  form(method='GET' action='/home/search')
+          div.form-group
+            input.form-control(type='text' name='keyword', placeholder='Enter key word')
+          button.btn(type='submit') Search
+
+  p(style='white-space:pre;')
+  table.table
+    tr 
+        th City
+        th State 
+        th ZIP
+        th Join
+            for item in clubs
+                tr
+                    td #{item.city}
+                    td #{item.state}
+                    td #{item.zip}
+                    td 
+                       form(method='GET' action='/home/j

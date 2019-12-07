@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= 'Sign Up'
+  form(method='POST' action='/adduser')
+          div.form-group
+            input.form-control(type='text' name='login', placeholder='Enter login', required)
+          div.form-group
+            input.form-control(type='password' name='password', placeholder='Enter password', required)
+          button.btn(type='submit') SignUp

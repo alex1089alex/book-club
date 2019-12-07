@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  a(href='/home/logout') Logout
+  p(style='white-space:pre;')
+  a(href='/home') Home
+  p(style='white-space:pre;')
+  h1= 'Joined Book Clubs'
+  p(style='white-space:pre;')
+  table.table
+    tr 
+        th Login
+        th City 
+        th State
+        th ZIP
+            for item in clubs
+                tr
+                    td #{item.login}
+                    td #{item.city}
+                    td #{item.state}
+                    td #{item.zip}
